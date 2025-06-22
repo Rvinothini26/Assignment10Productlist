@@ -6,11 +6,8 @@ function Productlist() {
     const [searchProducts,setSearchProducts]=useState('');
     const [filterProducts,setfilterProducts]=useState('all');
     const [categories,setCategories]=useState([]);
-   const [sortDirection, setSortDirection] = useState('asc'); 
-    //***important interview question */
-    //useEffect->having the direct access to our DOM elements//
-    // components lifecycle methods ->mounting - function run, updating -  unmounting-stop
-    useEffect(()=>{// Asynchronous function by default -mounting
+   const [sortDirection, setSortDirection] = useState('all'); 
+   useEffect(()=>{
    fetch("https://fakestoreapi.com/products")
    .then(res=>res.json())//updating
    .then(data=>setProducts(data))
@@ -19,7 +16,7 @@ function Productlist() {
    .then(data=>setCategories(['all',...data]));
     
 
-    },[]);//unmounting
+    },[]);
     
     const addtocart=(title)=>{
         console.log(`produt add to cart-${title}`)
